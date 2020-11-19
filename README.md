@@ -71,12 +71,12 @@ const purgecss = [
 ];
 
 module.exports = {
-  plugins: [
-    'postcss-import',
-    'tailwindcss',
-    'autoprefixer',
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+    'postcss-import': {},
     ...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
-  ],
+  },
 };
 
 ```
