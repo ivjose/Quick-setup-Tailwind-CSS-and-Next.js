@@ -65,18 +65,21 @@ Please make sure to update tests as appropriate.
 const purgecss = [
   '@fullhuman/postcss-purgecss',
   {
-    content: ['./components/**/*.js', './pages/**/*.js'],
+    content: [
+      './pages/**/*.{js,jsx,ts,tsx}',
+      './components/**/*.{js,jsx,ts,tsx}',
+    ],
     defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
   },
 ];
 
 module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-    'postcss-import': {},
+  plugins: [
+    'tailwindcss',
+    'autoprefixer',
+    'postcss-import',
     ...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
-  },
+  ],
 };
 
 ```
