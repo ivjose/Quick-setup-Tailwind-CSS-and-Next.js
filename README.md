@@ -25,9 +25,9 @@ yarn add classnames
 We now need to install some dependencies which are used for compiling CSS, including Tailwind itself.
 
 ```bash
-npm install --save-dev tailwindcss postcss-preset-env autoprefixer @fullhuman/postcss-purgecss
+npm install --save-dev tailwindcss postcss-preset-env autoprefixer postcss @fullhuman/postcss-purgecss postcss-import
 # or
-yarn add --dev tailwindcss postcss-preset-env autoprefixer @fullhuman/postcss-purgecss
+yarn add --dev tailwindcss postcss-preset-env autoprefixer postcss @fullhuman/postcss-purgecss postcss-import
 ```
 
 
@@ -43,15 +43,15 @@ By default this will create a file called `tailwind.config.js` in your project r
 
 
 ```js
-// tailwind.config.js
-
 module.exports = {
-  future: {},
   purge: [],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
-  variants: {},
+  variants: {
+    extend: {},
+  },
   plugins: [],
 }
 ```
@@ -62,8 +62,6 @@ Inside your project root, create the file `postcss.config.js` and add the follow
 Please make sure to update tests as appropriate.
 
 ```js
-// postcss.config.js
-
 const purgecss = [
   '@fullhuman/postcss-purgecss',
   {
@@ -92,8 +90,6 @@ module.exports = {
 Create a CSS file inside your project. I’ve created the directory and file `styles/index.css` and added the following:
 
 ```
-// styles/index.css
-
 @tailwind base;
 /* Write your own custom base styles here */
 
