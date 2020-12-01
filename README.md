@@ -56,32 +56,24 @@ module.exports = {
 }
 ```
 
-## Configure PostCSS with PurgeCSS
+## Configure Tailwind to remove unused styles in production
 
-Inside your project root, create the file `postcss.config.js` and add the following:
-Please make sure to update tests as appropriate.
+In your tailwind.config.js file, configure the purge option with the paths to all of your pages and components so Tailwind can tree-shake unused styles in production builds:
 
 ```js
-const purgecss = [
-  '@fullhuman/postcss-purgecss',
-  {
-    content: [
-      './pages/**/*.{js,jsx,ts,tsx}',
-      './components/**/*.{js,jsx,ts,tsx}',
+  module.exports = {
+    purge: [
+      './pages/**/*.js', 
+      './components/**/*.js', 
+      './features/**/*.js'
     ],
-    defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-  },
-];
-
-module.exports = {
-  plugins: [
-    'tailwindcss',
-    'autoprefixer',
-    'postcss-import',
-    ...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
-  ],
-};
-
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+      extend: {}
+    },
+    variants: {},
+    plugins: []
+  }
 ```
 
 ### Done with setup. That’s it! 🎉
@@ -90,9 +82,9 @@ module.exports = {
 
 ## Import Tailwind into your CSS
 
-Create a CSS file inside your project. I’ve created the directory and file `styles/index.css` and added the following:
+If you are planning to write some custom CSS in your project, use the @tailwind directive to include Tailwind's `base`, `components`, and `utilities` styles inside your main CSS file `styles/global.css`.
 
-```
+```css
 @tailwind base;
 /* Write your own custom base styles here */
 
@@ -106,10 +98,10 @@ Create a CSS file inside your project. I’ve created the directory and file `st
 
 ## Import your CSS with Next.js
 
-Create a file at pages/_app.js, or if you have one already, this is where you should import the stylesheet we created.
+Finally, ensure your CSS file is being imported in your `pages/_app.js` component:
 
 ```js
-import '../styles/index.css'
+import '../styles/globals.css'
 
 export default function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
