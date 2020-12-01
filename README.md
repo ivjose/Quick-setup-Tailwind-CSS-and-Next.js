@@ -52,7 +52,7 @@ module.exports = {
 
 ## Configure Tailwind to remove unused styles in production
 
-In your tailwind.config.js file, configure the purge option with the paths to all of your pages and components so Tailwind can tree-shake unused styles in production builds:
+In your `tailwind.config.js` file, configure the purge option with the paths to all of your pages, modules, and components so Tailwind can tree-shake unused styles in production builds:
 
 ```js
 module.exports = {
