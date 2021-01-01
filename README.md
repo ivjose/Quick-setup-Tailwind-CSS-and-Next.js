@@ -1,5 +1,10 @@
 # Quick setup Tailwind CSS and Next.js
 
+## Install setup
+
+* [PRISMIC setup](./PRISMIC.md)
+* [SHOPIFY setup](./SHOPIFY.md)
+
 ## Create a Next.js project
 
 ```bash
