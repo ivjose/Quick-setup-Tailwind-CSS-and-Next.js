@@ -102,6 +102,26 @@ export default function MyApp({ Component, pageProps }) {
 }
 ```
 
+## Absolute Imports and Module Path Aliases
+
+Create `jsconfig.json` in root directory. 
+
+```js
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/context/*": ["context/*"],
+      "@/lib/*": ["lib/*"],
+      "@/modules/*": ["modules/*"],
+      "@/schema/*": ["schema/*"],
+      "@/styles/*": ["styles/*"],
+    }
+  }
+}
+```
+
 # Links
 
 - [Next.js](https://github.com/zeit/next.js)
